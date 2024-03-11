@@ -32,7 +32,8 @@ int BinarySearch(int arr[],int element,int size)
         }
         else{
             low=mid;
-        }}
+        }
+        return -1;}
 
     }
 
@@ -42,7 +43,7 @@ int main()
     int arr[10]={1,3,4,3,5,65,34,6,34,6};
     int arr1[5]={1,2,3,4,5};
     int p=LinearSearch(arr,3,10);
-    int q=BinarySearch(arr1,4,5);
+    int q=BinarySearch(arr1,10,5);
     cout<<p<<endl;
     cout<<q<<endl;
 }
