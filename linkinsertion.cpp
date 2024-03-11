@@ -39,6 +39,14 @@ Node* insertAtEnd(Node* head,int data)
     return head;
 
 }
+Node* insertAfterNode(Node *head,Node* prevnode,int data)
+{   
+    Node* ptr= (Node*)malloc(sizeof(Node));
+    ptr->data=data;
+    ptr->next=prevnode->next;
+    prevnode->next=ptr;
+    return head;
+}
 void traverse(Node *ptr)
 {while(ptr!=NULL)
    { cout<<"Element: "<<ptr->data<<endl;
@@ -79,6 +87,9 @@ cout<<"Link list after insertIndex:"<<endl;
     cout<<endl;
     cout<<"Link list after insertend:"<<endl;
     head=insertAtEnd(head,90);
+    traverse(head);
+    cout<<"Link after insertAfternode:"<<endl;
+    head=insertAfterNode(head,third,67);
     traverse(head);
     return 0;
 
