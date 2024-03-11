@@ -11,7 +11,7 @@ void createArray(myArray *a,int tSize,int uSize)
 {
     (*a).total_size=tSize;
     (*a).used_size=uSize;
-    a->ptr=new int(sizeof(int)*uSize); //to initialize memory in heap
+    a->ptr=new int(sizeof(int)*uSize); //to initialize memory in heap and pointing ptr to the data
 }
 void get(myArray *a,int i) //use to get a particular index_value in an array
 {
@@ -30,7 +30,7 @@ void setval(myArray *a)
     {
         cout<<"Enter element: ";
         cin>>n; 
-        (a->ptr)[i]=n;
+        (a->ptr)[i]=n;//poiinting to the ith index
 
         }
 }
