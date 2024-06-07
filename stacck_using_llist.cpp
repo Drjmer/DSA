@@ -12,7 +12,7 @@ bool  isEmpty(Node* ptr){
     if(ptr==NULL){return true;}
 }
 bool isFull(Node *ptr){
-    Node* n=(Node*)malloc(sizeof(Node));
+    Node* n=(Node*)malloc(sizeof(Node));//no new memory can be allocated
     if(n==NULL){return true;}
 }
 Node* push(Node* top,int data)
@@ -27,7 +27,7 @@ Node* push(Node* top,int data)
 else{
     cout<<"List is full"<<endl;}
 }
-int pop(Node* *top){
+int pop(Node* *top){ //we want changes to the top  in main fxn also
     if(!isEmpty(*top)){
     Node* q=*top;
     *top=(*top)->next;
