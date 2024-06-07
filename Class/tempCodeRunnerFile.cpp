@@ -1,22 +1,13 @@
-Hero drj;//static allocation
-    // Hero *drj_47=new Hero(); //dynamic allocation
-    // drj.setHealth(90);
-    // drj.setLevel('A');
-    // cout<<drj.getHealth()<<endl; 
-    // cout<<drj.getLevel()<<endl;
-    // Hero ramesh(50,'C');
-    // cout<<ramesh.health<<endl;
-    // cout<<ramesh.level<<endl;
-    // char naam[5]="raam";
-    // ramesh.name=naam;
-    // cout<<ramesh.name<<endl;
+ Hero(Hero& temp)
+    {
+        cout<<"Copy Constructor Bhai Called"<<endl;
+        this->health=temp.health;
+        this->level=temp.level;
+        // this->name=temp.name;--->do shallow copy
 
-    // Hero C=ramesh;
-
-
-    // ramesh.name[0]='k';
-    // cout<<ramesh.name<<endl;
-    // cout<<C.health<<endl;
-    // cout<<C.level<<endl;
-    // cout<<C.name<<endl;
-    // delete drj_47;
+        //implementing deep copy instead of shallow copy
+        char *t=new char[strlen(temp.name)+1];
+        strcpy(t,temp.name);
+        this->name=t;
+        
+    }
