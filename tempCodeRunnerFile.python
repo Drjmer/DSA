@@ -1,0 +1,28 @@
+import torch
+from torch import nn
+from stylegan2_torch import Model
+
+# Load the pre-trained StyleGAN2 model
+model = Model.load('stylegan2-ffhq-config-f.pt')
+
+# Function to generate image with customizable man features
+def generate_image(man_attributes):
+    # Adjust the attributes of the man (e.g., hair color, clothing) in the latent space
+    man_latent = model.get_latent(man_attributes)
+    
+    # Generate the image
+    image = model.generate(man_latent, condition_on='moon, horse')
+    
+    return image
+
+# Example attributes for the man
+man_attributes = {
+    'hair_color': 'blonde',
+    'clothing': 'space suit'
+}
+
+# Generate the image
+image = generate_image(man_attributes)
+
+# Save or display the image
+image.save('man_on_horse_on_moon.png')

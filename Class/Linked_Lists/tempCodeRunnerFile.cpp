@@ -1,2 +1,1 @@
-deleteNode(head,second);
-    traverse(head);
+traverse_reverse(head);

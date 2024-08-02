@@ -5,6 +5,15 @@ class Node
 public:
     int data;
     Node *nxt;
+
+    Node()
+    {
+
+    }
+    Node(int data)
+    {
+        this->data=data;
+    }
 };
 void traverse(Node* &p)
 {
@@ -18,6 +27,37 @@ void traverse(Node* &p)
     cout<<"--------------------------------"<<endl;
 
 }
+bool detectLoop(Node* head)
+{
+    Node* tmp=head;
+    map<Node*,bool>visited;
+    while(tmp!=NULL)
+    {
+        if(visited[tmp]==true)
+        {
+            return true;
+        }
+        visited[tmp]=true;
+        tmp=tmp->nxt;
+    }
+    return false;
+}
+
+bool detect_loop_Algo(Node*head)
+{
+    Node* slow=head;
+    Node* fast=head;
+    if(head==NULL||head->nxt==NULL) return false; 
+    while(fast!=NULL && fast->nxt!=NULL)
+    {
+        fast=fast->nxt->nxt;
+        slow=slow->nxt;
+        if(fast==slow) return true;
+    }
+    return false;
+}
+    
+
 void insertAtTail(Node* &p,int data)
 {
    
@@ -48,6 +88,7 @@ void deleteNode(Node* &p,Node *q) //delete by address
     delete q;
 }
 
+
 void deleteNode1(Node* &p,int data) //delete by value
 {
     Node* temp=p;
@@ -72,7 +113,37 @@ void deleteLastNode(Node* &p)
     tmp->nxt=NULL;
     delete q;
 }
+//how to copy a linked list part-1;
+Node* llcopy(Node* head)
 
+{
+    if(head==NULL) return head;
+    Node* tmp=head;
+    Node* curr=new Node(tmp->data);
+    Node* prev=curr;
+    Node* ans=curr;
+    tmp=tmp->nxt;
+    delete curr;
+    while(tmp!=NULL)
+    {
+        curr= new Node(tmp->data);
+        prev->nxt=curr;
+        prev=curr;
+        tmp=tmp->nxt;
+
+    }
+    prev->nxt=NULL; //crucial
+    return ans;
+}
+
+//how to copy a linked list part-2 using recursion
+Node* llcopy1(Node *head)
+{
+    if(head==NULL) return head;
+    Node *curr=head;
+    curr->nxt=llcopy1(head->nxt);
+    return curr;
+}
 void insertAtHead(Node* &p, int data)
 {
     Node *temp = new Node();
@@ -81,6 +152,19 @@ void insertAtHead(Node* &p, int data)
     p = temp;
     
 
+}
+Node* reverse(Node* head)
+{
+    Node* curr=head;
+    Node* prev=NULL;
+     while(curr!=NULL )
+        {
+            Node* f=curr->nxt;
+            curr->nxt=prev;
+            prev=curr;
+            curr=f;
+        }
+        return prev;
 }
 int main()
 {
@@ -93,23 +177,12 @@ int main()
     second->nxt = third;
     third->data = 30;
     third->nxt = NULL;
-    traverse(head);
     insertAtHead(head, -55);
-    // cout << endl;
-    traverse(head);
-
-    insertAtTail(head,-55);
-    // cout << endl;
-    traverse(head);
+    insertAtTail(head,-550);
     insertAtMiddle(head,-55,second);
-    // cout<<"------------------------"<<endl;
     traverse(head);
-    deleteNode(head,second);
-    traverse(head);
-    deleteNode1(head,30);
-    traverse(head);
-    deleteFirstNode(head);
-    traverse(head);
-    deleteLastNode(head);
-    traverse(head);
+    Node* new_head=llcopy1(head);
+    traverse(new_head);
+    Node* newhead1=llcopy(head);
+    traverse(newhead1);
 }

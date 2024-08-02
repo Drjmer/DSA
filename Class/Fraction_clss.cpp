@@ -20,16 +20,14 @@ class Fraction {
             int x=this->ntor,y=this->dtor;
             this->ntor=(x*b.dtor)+(b.ntor*y);
             this->dtor=(y*b.dtor);
-            cout<<endl<<"Add"<<endl;
-            this->print();
+            
         }
         void multiply(Fraction &b)
         {
             int x=this->ntor,y=this->dtor;
             this->ntor=(x*b.ntor);
             this->dtor=(y*b.dtor);
-            cout<<endl<<"Multiply"<<endl;
-            this->print();
+            
         }
         void simplify()
         {

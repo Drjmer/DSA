@@ -4,6 +4,8 @@
         "ostream": "cpp",
         "vector": "cpp",
         "cmath": "cpp",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "iostream": "cpp",
+        "random": "cpp"
     }
 }

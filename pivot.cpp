@@ -17,6 +17,6 @@ int pivot(int arr[],int n)
     return s;
 }
 int main(){
-int arr[10]={1,2,3,4,5,6,7,-44,-43,-42};
-cout<<pivot(arr,10)<<endl;
+int arr[5]={1,2,-2,-1,0};
+cout<<pivot(arr,5)<<endl;
 }

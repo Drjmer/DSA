@@ -63,15 +63,7 @@ int main(){
     s->size=80;
     s->top=-1;
     s->arr=(int*)malloc(s->size*sizeof(int));//initialize data in heap
-    // for(int i=0;i<s->size;i++)
-    // {s->arr[0]=21;
-    // s->top++;}
-    // if(isEmpty(s)){
-    //     cout<<"Stack is empty"<<endl;
-    // }
-    // if(isFull(s)){
-    //     cout<<"Stack is full"<<endl;
-    // }
+
     push(s,23);
     push(s,45);
     push(s,89);

@@ -1,14 +1,17 @@
 #include<bits/stdc++.h>
 using namespace std;
 int partition(int arr[],int s,int e)
-{
+{   //moving the arr[s] element to its right position;
     int cnt=0,pivotIndex,pivot=arr[s];
     for(int i=s;i<=e;i++)
     {
         if(arr[i]<pivot) cnt++;
     }
     pivotIndex=s+cnt;
+
     swap(arr[pivotIndex],arr[s]);
+
+    //doing the partition thing 
     int i=s,j=e;
     while(i<pivotIndex&&j>pivotIndex)
     {
