@@ -30,8 +30,11 @@ void leveltraversal(node* root)
     queue<node*>q;
     q.push(root);
     q.push(NULL);
+    vector<int>cnt1;
+    int cnt=0;
     while(!q.empty())
     {
+        
         node* tmp=q.front();q.pop();
         if(tmp==NULL)
         {
@@ -39,15 +42,21 @@ void leveltraversal(node* root)
             if(!q.empty())
             {
                 q.push(NULL);
+                cnt1.push_back(cnt);
+                cnt=0;
             }
         }
         else
         {
+            cnt++;
             cout<<tmp->data<<" ";
             if(tmp->left) q.push(tmp->left);
             if(tmp->right) q.push(tmp->right);
         }
     }
+    cnt1.push_back(cnt);
+    for(int i=0;i<cnt1.size();i++) cout<<"hi"<<cnt1[i]<<" ";
+    cout<<endl;
 }
 void reverseLevel(node* root)
 {  stack<int>s;
@@ -175,6 +184,7 @@ int main()
     //1 2 3 4 5 -1 6 -1 7 -1 -1 -1 -1 -1 -1
     node* root=NULL;
     buildFromLevelTree(root);
+    cout<<endl;
     MorrisTraversal(root);
     leveltraversal(root);
         }

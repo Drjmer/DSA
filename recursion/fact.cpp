@@ -9,6 +9,7 @@ long long int fact(long long int n)
 int main()
 {   long long int n;
 cin>>n;
+int x=fact(n);
     cout<<fact(n)<<endl;
     return 0;
 }

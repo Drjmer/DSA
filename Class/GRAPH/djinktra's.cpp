@@ -1,39 +1,46 @@
-#include<bits/stdc++.h>
-using namespace std;
-class graph{
-    public:
+#include <bits/stdc++.h>
+vector<int> dijkstra(vector<vector<int>> &vec, int vertices, int edges, int source) {
+    // Write your code here.
 
     unordered_map<int,list<pair<int,int>>>adj;
 
-    void add_edge(int u,int v,int weight)
+    for(int i=0;i<edges;i++)
     {
-        adj[u].push_back(make_pair(v,weight));
-        adj[v].push_back(make_pair(u,weight));
+        int u=vec[i][0];
+        int v=vec[i][1];
+        int w=vec[i][2];
+
+        adj[u].push_back(make_pair(v,w));
+        adj[v].push_back(make_pair(u,w));
+
     }
 
-    void print_edge()
-    {
-        for(auto i:adj)
-        {
-            cout<<i.first<<"->";
-            for(auto j :i.second)
-                cout<<"["<<j.first<<","<<j.second<<"],";
-            cout<<endl;
-        }
+    vector<int>dist(vertices);
         
+    for(int i=0;i<vertices;i++) dist[i]=INT_MAX;
+
+    dist[source]=0;
+    set<pair<int,int>>s;
+    s.insert(make_pair(dist[source],source));
+    while(!s.empty())
+    {
+        auto front=*(s.begin()); //front-->[distance of node,node name]
+
+        s.erase(s.begin());
+
+        for(auto neighbour: adj[front.second]) //neighbour-->[node name, distance from the adjacent node]
+        {
+            if(neighbour.second+front.first<dist[neighbour.first])
+            {
+                //delete the neighboour distance from set and updatw it;
+                auto node_delete=s.find(make_pair(dist[neighbour.first],neighbour.first));
+                if(node_delete!=s.end())
+                s.erase(node_delete);
+                dist[neighbour.first]=neighbour.second+front.first;
+                s.insert(make_pair(dist[neighbour.first],neighbour.first));
+
+            }
+        }
     }
-}
-
-
-int main()
-{
-    graph g;
-    g.add_edge(0,1,5);
-    g.add_edge(0,2,8);
-    g.add_edge(2,1,9);
-    g.add_edge(2,3,6);
-    g.add_edge(3,1,2);
-
-
-    g.print_edge();
+    return dist;
 }

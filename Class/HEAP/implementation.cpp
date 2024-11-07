@@ -111,5 +111,5 @@ int main()
     cout<<endl;
     heapSort(arr,5);
     cout<<"---------------------------------"<<endl;
-for(int i=1;i<=n;i++) cout<<arr[i]<<" ";
+    for(int i=1;i<=n;i++) cout<<arr[i]<<" ";
 }

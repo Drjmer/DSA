@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+     #include <bits/stdc++.h>
 using namespace std;
 class TrieNode
 {
@@ -38,7 +38,7 @@ public:
             root->isTerminal = true;
             return;
         }
-        
+
         int index = word[0] - 'A';
         TrieNode *child;
         if (root->children[index] != NULL) // if the child or the char exists just move forward
@@ -55,8 +55,6 @@ public:
     }
     void insertWord(string word)
     {
-        
-
         insertUtil(root, word);
     }
 
@@ -67,42 +65,42 @@ public:
 
         int index = word[0] - 'A';
         TrieNode *child;
-        if (root->children[index]!=NULL)
+        if (root->children[index] != NULL)
         {
             child = root->children[index];
         }
         else
             return false;
-        
+
         // recursive calls
-        return  searchUtil(child, word.substr(1));
+        return searchUtil(child, word.substr(1));
     }
 
     bool searchWord(string word)
     {
         return searchUtil(root, word);
     }
-    void deleteUtil(TrieNode*root, string word)
+    void deleteUtil(TrieNode *root, string word)
     {
         if (word.length() == 0)
-             root->isTerminal=false;
+            root->isTerminal = false;
 
         int index = word[0] - 'A';
         TrieNode *child;
-        if (root->children[index]!=NULL)
+        if (root->children[index] != NULL)
         {
             child = root->children[index];
         }
         else
-            return ;
-        
+            return;
+
         // recursive calls
         deleteUtil(child, word.substr(1));
     }
 
     void deleteWord(string word)
     {
-        deleteUtil(root,word);
+        deleteUtil(root, word);
     }
 };
 
@@ -111,9 +109,7 @@ int main()
     Trie *t = new Trie();
     t->insertWord("ABCD");
     t->insertWord("ABCED");
-    cout<<t->searchWord("ABCED")<<endl;
+    cout << t->searchWord("ABCED") << endl;
     t->deleteWord("ABCED");
-    cout<<t->searchWord("ABCED")<<endl;
-
-    
+    cout << t->searchWord("ABCED") << endl;
 }

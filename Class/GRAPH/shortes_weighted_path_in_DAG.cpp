@@ -1,8 +1,3 @@
-// Online C++ compiler to run C++ program online
-
-
-
-//run it on online compiler only.
 
 
 

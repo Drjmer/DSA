@@ -158,7 +158,7 @@ Node* deleteNode(Node* root,int target)
     else{
        root->right= deleteNode(root->right,target);
     }
-
+    return root;
 }
 
 int main()

@@ -36,7 +36,7 @@ int BinarySearch(int arr[],int element,int size)
         return -1;}
 
     }
-
+//what the fuck is this vs code I hate
 }
 int main()
 {

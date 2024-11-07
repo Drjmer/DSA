@@ -4,15 +4,16 @@ using namespace std;
 int main()
 {
     
-    int arr[10]={34,65,3,-34,34,6,3,45,-34,-90};
-    for(int i=1;i<10;i++)
+    int arr[8]={1, 5, 6, 0, -10, 9, 8 ,0};
+    int n=8;
+    for(int i=0;i<n-1;i++)
     {
-        for(int j=0;j<10-i;j++)
+        for(int j=0;j<n-1-i;j++)
         {
             if(arr[j]>arr[j+1]) swap(arr[j],arr[j+1]);
         }
     }
-    for(int i=0;i<10;i++)
+    for(int i=0;i<n;i++)
     cout<<arr[i]<<" ";
     return 0;
 }
